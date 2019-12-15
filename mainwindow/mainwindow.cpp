@@ -1,10 +1,19 @@
 #include "mainwindow.hpp"
 
+#include <QTextEdit>
+
 namespace dnd {
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-{ }
+{
+    _pTextEdit = new QTextEdit(this);
+    _pTextEdit->setAcceptDrops(false);
+
+    setCentralWidget(_pTextEdit);
+    setWindowTitle(tr("Text Editor"));
+    setAcceptDrops(true);
+}
 
 MainWindow::~MainWindow()
 { }
