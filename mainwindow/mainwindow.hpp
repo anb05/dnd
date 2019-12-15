@@ -3,6 +3,11 @@
 
 #include <QMainWindow>
 
+class QTextEdit;
+class QString;
+class QDragEnterEvent;
+class QDropEvent;
+
 namespace dnd {
 
 class MainWindow : public QMainWindow
@@ -19,6 +24,16 @@ public:
 public:
     MainWindow& operator= (const MainWindow& ) = delete;
     MainWindow& operator= (MainWindow&& )      = delete;
+
+protected:
+    void dragEnterEvent(QDragEnterEvent* event) override;
+    void dropEvent(QDropEvent* event) override;
+
+private:
+    bool readFile(const QString& fileName);
+
+private:
+    QTextEdit* _pTextEdit {nullptr};
 };
 
 } // namespace dnd
